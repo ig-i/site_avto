@@ -19,7 +19,6 @@ class RegisterUserForm(UserCreationForm):  # переопределили ста
 class RegisterForm(forms.Form):  # форма обратной связи (не связанная с моделью)
     name = forms.CharField(label="Имя", max_length=255)
     telephone = forms.CharField(label="Телефон", max_length=255)
-    email = forms.EmailField(label="Email")
 
 
 class RegistrationForm(forms.Form):
