@@ -1,0 +1,65 @@
+{% extends 'mobile/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a>
+<div class="zak">
+    <h1>{{ zakaz.title }}</h1>
+    <img class="zakMobile" src="{{ zakaz.image.url }}" alt="">
+
+<h2>Вам понравился этот авто?</h2>
+    <h3 class="inform" style="color: #000;">Заполните форму ниже, наш менеджер перезвонит вам в течении 5-10 минут. Либо
+        можете самостоятельно позвонить по телефону. Либо написать нам в мессенджере.
+    </h3>
+
+
+    <div class="justify-content">
+
+        <div class="col">
+            <form action="{% url 'thanks_page' %}" class="zac-1" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn4">Отправить</button>
+            </form>
+        </div>
+        <!--                <div>-->
+        <!--                    <label class="btn-group2" for={{form.name.id_for_label}}>Имя</label>-->
+        <!--                    {{ form.name }}-->
+        <!--                     <label class="btn-group2" for={{form.telephone.id_for_label}}>Телефон</label><br>-->
+        <!--                    {{ form.telephone }}-->
+        <!--                    <label class="btn-group2" for={{form.email.id_for_label}}>"Эл. почта"</label>-->
+        <!--                    {{ form.email }}-->
+        <!--                     <label class="btn-group2" for={{form.title.id_for_label}}>"Марка авто"</label><br>-->
+        <!--                    {{ form.title}}-->
+        <!--                     <label class="btn-group2" for={{form.text.id_for_label}}>"Цвет авто"</label>-->
+        <!--                    {{ form.text }}-->
+        <!--                     <label class="btn-group2" for={{form.year.id_for_label}}>"Год выпуска"</label>-->
+        <!--                    {{ form.year }}-->
+        <!--                    <button type="submit" class="btn-form1">Отправить</button>-->
+        <!--                </div>-->
+
+
+        <div class="col-1">
+
+            <a class="avenir" href="tel:89209076490"
+               style="color: #000; padding: 10px 30px; font-size: 2rem; font-weight: 500;">
+                <img style="padding-bottom: 5px;" src="{% static 'mobile/phone-ic.png' %}">
+                8-920-907-64-90
+            </a>
+
+            <a class="avenir" href="79209076490"
+               style="padding: 10px 30px; font-size: 1.5rem; font-weight: 500;"><img
+                    style="padding-bottom: 2px;" width="25" src="{% static 'mobile/whatsapp-logo.png' %}">
+                написать в WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+
+<a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a>
+
+
+{% endblock %}

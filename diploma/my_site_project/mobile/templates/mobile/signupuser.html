@@ -1,0 +1,20 @@
+{% extends 'mobile/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a>
+
+<h1>Заказать авто можно после регистрации</h1>
+
+
+<h3>{{ error }}</h3>
+
+<form  method="post" class="register">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn3">Зарегестрироваться</button>
+</form>
+
+
+{% endblock %}

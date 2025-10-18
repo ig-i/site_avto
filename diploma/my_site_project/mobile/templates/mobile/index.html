@@ -1,0 +1,137 @@
+{% extends 'mobile/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container" style="position">
+    <a href="{% url 'contact' %}"><img src="{% static 'mobile/2.jpg' %}"></a>
+    <a href="https://api.whatsapp.com/send?phone=79209076492">
+        <img src="{% static 'mobile/whatsapp-logo.png' %}">написать в WhatsApp </a>
+
+
+    <div class="social-box">
+
+    </div>
+
+    <div class="collapse navbar" id="navbarResponsive">
+        <ul class="navbar-auto">
+
+            <li class="item text">
+                <span style="color"><img src="{% static 'mobile/map-ico.png' %}"> г.Владимир</span><br>
+                <span style="color  ">ул. Мира 57А, офис 208 </span>
+            </li>
+
+            <li class="nav-item"><a class="avenir" href="tel:89209076492"
+                                    style="color: #000; padding: 10px 40px; font-size: 1.5rem; font-weight: 500;">
+                <img style="padding-bottom: 2px;" src="{% static 'mobile/phone-ic.png' %}"> 8-920-907-64-92</a></li>
+            <li class="nav-item"><a class="btn" href="{% url 'contact' %}" style="color">заказать звонок</a></li>
+        </ul>
+
+    </div>
+</div>
+<div class="img">
+    <img src="{% static 'mobile/4.png' %}" alt="">
+</div>
+
+<div class="menu">
+    <ul>
+        <li><a href="{% url 'company' %}">О нас</a></li>
+        <li><a href="{% static 'mobile/договор.doc' %} " target="_blank">Условия</a></li>
+        <li><a href="{% url 'contact' %}">Контакты</a></li>
+        <li><a href="{% url 'signupuser' %}">Регистрация</a></li>
+    </ul>
+
+</div>
+
+<h1>АВТОМОБИЛИ В НАЛИЧИИ</h1>
+
+<div class="block">
+    {% for project in projects %}
+
+    <div class="element">
+        <h2>
+            {{ project.title }}
+        </h2>
+
+        <div class="card">
+            <a href="{% url 'detail' project.id %}">
+                <img src="{{ project.image.url }}" alt="image">
+            </a>
+        </div>
+
+
+        <p class="card-text">
+            <img src="{% static 'mobile/benz.png' %}" width="14"> - пропан, 1.6л., 8 л. /100 км.<br>
+            <img src="{% static 'mobile/kpp.png' %}" width="14"> - автомат<br>
+            <img src="{% static 'mobile/privod.png' %}" width="16"> - Привод: передний<br>
+            <img src="{% static 'mobile/kraska.png' %}" width="16"> - {{ project.text }} <br>
+            <img src="{% static 'mobile/rul.png' %}" width="16"> - Руль: левый<br>
+            <img src="{% static 'mobile/god.png' %}" width="16"> - 2022 год
+        </p>
+
+        <div>
+            <div class="info">
+                <span class="price1">Цена</span><br>
+                <span class="price">14000</span> руб/неделя<br>
+                <a class="btn1" href="{% url 'zakaz' project.id %}" style="color">заказать</a><br>
+                <a class="btn2" href="{% url 'detail' project.id %}" style="color">подробнее</a><br>
+
+            </div>
+        </div>
+    </div>
+
+
+    {% endfor %}
+
+    <div class="container-5" id="contact">
+        <div class="call">
+            <img src="{% static 'mobile/icon2.png' %}" alt="">
+            <h2> --> Свяжись с нами <--</h2>
+            <img src="{% static 'mobile/icon2.png' %}" alt="">
+        </div>
+        <p class="pt-1" style="color">Свяжитесь с нами любым
+            удобным для вас способом. Вы можете оставить свой телефон и мы перезвоним Вам. Либо можете позвонить по
+            телефону. Либо напишите нам в мессенджере.
+        </p>
+
+        <div class="just-content">
+
+            <div class="col">
+                <form action="{% url 'thank_page' %}" class="zac-2" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn5">Отправить</button>
+                </form>
+            </div>
+
+                <!--        <div class="justify-content">-->
+                <!--            <div class="col">-->
+                <!--                <form class="form" action="send2.php" method="POST">-->
+                <!--                    <div>-->
+                <!--                        <input type="hidden" name="send" value="1">-->
+                <!--                        <input type="text" name="name" placeholder="Имя" class="btn-group2">-->
+                <!--                        <input type="text" name="telefon" placeholder="Телефон" class="btn-group2">-->
+                <!--                        <button type="submit" class="btn-form">Отправить</button>-->
+                <!--                    </div>-->
+                <!--                </form>-->
+                <!--            </div>-->
+
+
+            <div class="col-2">
+
+                <a class="avenir" href="tel:89209076490"
+                   style="color: #000; padding: 10px 30px; font-size: 2rem; font-weight: 500;">
+                    <img style="padding-bottom: 5px;" src="{% static 'mobile/phone-ic.png' %}">
+                    8-920-907-64-90
+                </a>
+
+                <a href="https://api.whatsapp.com/send?phone=79209076492">
+                    <img src="{% static 'mobile/whatsapp-logo.png' %}">написать в WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+    <!--  <div class="text">{{ project.text|linebreaks}}</div>  &lt;!&ndash;slice:"150"&ndash;&gt;-->

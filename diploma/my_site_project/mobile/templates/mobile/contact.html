@@ -1,0 +1,47 @@
+{% extends 'mobile/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+ <div class="container-6" id="contact">
+     <div class="pt">
+        <a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a><br>
+        <h2> Свяжись с нами и мы поможем тебе быстро подобрать нужный авто</h2>
+
+     </div>
+
+
+        <p class="pt-1" style="color: #000;">Свяжитесь с нами любым
+            удобным для вас способом. Вы можете оставить свой телефон и мы перезвоним Вам. Либо можете позвонить по
+            телефону. Либо напишите нам в мессенджере.</p>
+
+        <div class="justify-content">
+            <div class="col">
+                <form class="form" action="send2.php" method="POST">
+                    <div>
+                        <input type="hidden" name="send" value="1">
+                        <input type="text" name="name" placeholder="Имя" class="btn-group2">
+                        <input type="text" name="telefon" placeholder="Телефон" class="btn-group2">
+                        <button type="submit" class="btn-form">Отправить</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-1">
+
+                <a class="avenir" href="tel:89209076492"
+                   style="color: #000; padding: 10px 30px; font-size: 2rem; font-weight: 500;">
+                    <img style="padding-bottom: 5px;" src="{% static 'mobile/phone-ic.png' %}">
+                    8-920-907-64-92
+                </a>
+
+                <a class="avenir" href="https://wa.me/79209076492"
+                   style="padding: 10px 30px; font-size: 1.5rem; font-weight: 500;"><img
+                        style="padding-bottom: 2px;" width="25" src="{% static 'mobile/whatsapp-logo.png' %}">
+                    написать в Watsapp
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

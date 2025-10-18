@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: "Roboto", sans-serif;
+    background: #CCCCFF;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    
+    
+    
+}
+.navbar-auto{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+
+.nav-item{
+    padding: 5px 25px;
+    color:  #667;
+    font-size: 12px;
+    padding: 5px 25px;
+    font-weight: bold;
+}
+
+.btn {
+    padding: 10px 22px;
+    background-color: #dc3545;
+    color: #FFF;
+    border-radius: 5px;
+    margin-top: 15px;
+    list-style: none;
+    font-weight: bold;
+    text-decoration: none;  
+   
+}
+
+.img{
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 12px 2px #003366; 
+ }
+
+.wrap{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+.block{
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 12px 2px #003366; 
+
+}
+h2, h1{
+    text-align: center;
+}
+
+.element{
+    flex-basis: 360px;
+    background: lightyellow;
+    border: 3px solid grey;
+}
+
+.menu{
+    background: #003366;
+    cursor: pointer;
+     
+
+}
+
+.menu ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+}  
+
+.menu a, .menu li{
+    color: #FFF;
+    text-decoration: none;
+}
+.card-text{
+    text-align: left;
+    margin-left: 6px;
+
+}
+.info{
+     text-align: left;
+     margin-left: 6px;
+}
+    
+/* .btn11 {
+    padding: 10px 22px;
+    background-color: #dc3545;
+    color: #FFF;
+    border-radius: 5px;
+    margin-top: 15px;
+    list-style: none;
+    font-weight: bold;
+    text-decoration: none; 
+} */
+
+.btn1 {
+    /* display: inline-block; */
+    background-color: #dc3545;
+    color: #FFF;
+    /* font-weight: 400; */
+    text-align: center;
+    /* vertical-align: middle;  */
+    user-select: none;
+    border: 1px solid;
+    /* font-size: 1rem; */
+   
+    line-height: 40px;
+    /* width: 100%;  */
+    text-decoration: none;  
+    margin-top: 6px;
+    padding: 6px; 
+}
+.btn2 {
+    display: inline-block;
+    background-color: #667;
+    color: #FFF;
+    font-weight: 400;
+    text-align: center;
+    /* vertical-align: middle; */
+    user-select: none;
+    border: 1px solid;
+    /* font-size: 1rem; */
+    line-height: 20px;
+    text-decoration: none; 
+    margin-top: 1,5rem;
+    padding: 6px;
+    margin-bottom: 6px;  
+}
+
+
+/* .btn22 {
+    padding: 10px 22px;
+    background-color: #b3b4b4;
+    color: #FFF;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-decoration: none;
+    list-style: none;
+    font-weight: bold;
+} */
+
+.btn1 .p{
+     font-weight: bold;
+
+}
+.block img{
+    max-width: 360px;
+}
+.price1, .price{
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: bold;
+}
+.container-5 h2, p{
+    text-align: center;
+    
+}
+
+
+a:hover {
+    color: #c0bd15;
+}
+.justify-content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    /* box-sizing: border-box; */
+   
+    /* align-items: center; */
+}
+.just-content{
+    display: flex;
+    justify-content: space-evenly;
+    /* box-sizing: border-box;  */
+    width: 100%;
+    padding: 10px; 
+}
+.zac-2 input{
+  width: 100%; 
+  padding: 5px;
+
+  
+  /* margin-bottom: 15px; */
+  box-sizing: border-box; 
+}
+
+/* .d{
+   display: flex; 
+   justify-content: space-between;
+} */
+.btn-form {
+    font-weight: bold;
+    background-color: #dc3545;
+    cursor: pointer;
+}
+input, button{
+    /* width: 50%; */
+    margin-top: 10px;
+    padding: 5px;
+    margin-bottom: 15px;
+
+}
+.form{
+   padding: 5px;
+
+}
+.pt  h3{
+    text-align: center;
+}
+.pt-1{
+   font-weight: bold; 
+}
+/*
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+} */
+.comp p{
+    font-weight: bold;
+
+}
+.call{
+   display: flex; 
+   justify-content: center; 
+   margin-top: 15px;
+}
+.form-input{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.btn3 {
+    border: 2px solid #264b5d;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #dc3545;
+    font-weight: bold;
+    
+}
+.btn4{
+     border: 2px solid #264b5d;
+    width: 90%;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #dc3545;
+    font-weight: bold;   
+}
+.btn5{
+     border: 2px solid #264b5d;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #dc3545;
+    font-weight: bold;   
+}
+/* .col-2{
+   
+     display: flex;
+     justify-content: space-between;
+     box-sizing: border-box;   
+    
+} */
+form label{
+    font-size: 18px;
+}
+h3{
+    text-align: center;
+}
+
+.zakMobile, .detMobile{
+  width: 100%;  
+}
+.inform{
+   text-align: center; 
+   font-weight: bold;
+   margin-top: 30px;
+   padding: 10px;
+}
+
+
+.btn-form1{
+   width: 80%;
+    font-weight: bold;
+    background-color: #dc3545;
+    cursor: pointer;  
+}
+.zac-1 input{
+  width: 90%; 
+  padding: 5px;
+  box-sizing: border-box; 
+}
+.btn{
+    text-align: center;
+}
+.thank{
+    text-align: center;
+    font-weight: bold;
+   margin-top: 30px;
+   padding: 10px;
+}
+
+
+
+
+
+
+
+
+
