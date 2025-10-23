@@ -17,6 +17,8 @@ class BlogAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Mobile, BlogAdmin)
+admin.site.register(UserForm, BlogAdmin)
+admin.site.register(CarForm, BlogAdmin)
 
 
 

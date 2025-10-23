@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from mobile.models import Mobile
-from .forms import RegisterForm, RegistrationForm, RegisterUserForm                           # импортируем форму
+from mobile.models import UserForm  # модель обратная связь
+from mobile.models import CarForm  # модель заказ авто
+from .forms import RegisterUserForm, CallForm, OrdercarForm  # импортируем форму
 
 
 # регистрация и автоматическая авторизация
@@ -29,7 +31,7 @@ def signup_user(request):
 
 def index(request):
     projects = Mobile.objects.all()
-    return render(request, 'mobile/index.html', {'projects': projects, 'form': RegistrationForm()})
+    return render(request, 'mobile/index.html', {'projects': projects, 'form': CallForm()})
 
 
 def detail(request, pk):
@@ -45,64 +47,35 @@ def company(request):
 
 def contact(request):
     projects = Mobile.objects.all()
-    return render(request, 'mobile/contact.html', {'projects': projects})
+    return render(request, 'mobile/contact.html', {'projects': projects, 'form': CallForm()})
 
 
 def zakaz(request, pk):
     zakaz_obj = Mobile.objects.get(id=pk)
-    return render(request, 'mobile/zakaz.html', {'zakaz': zakaz_obj, 'form': RegisterForm()})
+    return render(request, 'mobile/zakaz.html', {'zakaz': zakaz_obj, 'form': OrdercarForm()})
 
 
-def thanks_page(request):
+def thanks_page(request):  # форма заказ авто
     if request.POST:
-        name = request.POST['name']                # забираем данные пользователя  из полей формы
+        name = request.POST['name']  # забираем данные пользователя из полей формы
         telephone = request.POST['telephone']
-        email = request.POST['email']
-        element = Mobile(name=name, telephone=telephone, email=email)
+        car_name = request.POST['car_name']
+        car_color = request.POST['car_color']
+        car_year = request.POST['car_year']
+        element = CarForm(name=name, telephone=telephone, car_name=car_name, car_color=car_color,
+                          car_year=car_year)
         element.save()
         return render(request, 'mobile/thanks.html', {'name': name})
     else:
-        return render(request, 'mobile/thanks.html')
+        return render(request, 'mobile/index.html')
 
 
-def thank_page(request):
+def thank_page(request):  # форма обратная связь
     if request.POST:
-        name = request.POST['name']                # забираем данные пользователя  из полей формы
+        name = request.POST['name']  # забираем данные пользователя из полей формы
         telephone = request.POST['telephone']
-        element = Mobile(name=name, telephone=telephone)
+        element = UserForm(name=name, telephone=telephone)
         element.save()
         return render(request, 'mobile/thank.html', {'name': name})
     else:
-        return render(request, 'mobile/thank.html')
-#
-# def form_valid(request, form):
-#     user = form.save()
-#     print(form.cleaned_data, user)
-#     if request.method == "POST":
-#         return render(request, 'mobile/zakaz.html', {'form': RegisterForm()})
-#     subject = "Message"
-#     body = {                                          # получаем из полей формы значения
-#         'name': form.cleaned_data['name'],
-#         'telephone': form.cleaned_data['telephone'],
-#         'email': form.cleaned_data['email'],
-#         'title': form.cleaned_data['title'],
-#         'text': form.cleaned_data['text'],
-#         'year': form.cleaned_data['year'],
-#     }
-#     message = "\n".join(body.values())
-#     try:
-#         send_mail(                                        # передаем параметры
-#             subject,                                      # тема письма
-#             message,                                      # само сообщение (тело письма)
-#             form.cleaned_data['email'],                   # от кого будет отправляться письмо
-#             ['admin@localhost']                # список адресатов которые будут получать эти письма
-#         )
-#     except BadHeaderError:
-#         return HttpResponse("Данные не отправлены")
-#     return redirect('index')
-
-# def register(request):
-#     if request.method == "POST":
-#         return render(request, 'mobile/zakaz.html', {'form': RegisterForm()})
-#     else:
-#         return render(request, 'mobile/zakaz.html', {'form': RegisterForm()})
+        return render(request, 'mobile/index.html')
