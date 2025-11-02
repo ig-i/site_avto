@@ -19,6 +19,10 @@ class Mobile(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'автомобиль'
+        verbose_name_plural = 'автомобили'
+
 
 class UserForm(models.Model):
     name = models.CharField(max_length=200, blank=True)
@@ -26,6 +30,10 @@ class UserForm(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'обратная связь'
+        verbose_name_plural = 'обратная связь'
 
 
 class CarForm(models.Model):
@@ -37,4 +45,8 @@ class CarForm(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'заказ автомобиля'
+        verbose_name_plural = 'заказ автомобилей'
 

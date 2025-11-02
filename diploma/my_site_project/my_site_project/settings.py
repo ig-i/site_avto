@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mobile.apps.MobileConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'telebot.apps.TelebotConfig',
 
 ]
 

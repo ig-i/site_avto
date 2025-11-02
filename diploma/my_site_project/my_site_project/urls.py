@@ -37,6 +37,7 @@ urlpatterns = [
     path('zakaz/<str:pk>/', views.zakaz, name='zakaz'),
     path('thanks/', views.thanks_page, name='thanks_page'),
     path('thank/', views.thank_page, name='thank_page'),
+    # path('thanks/', views.thanks_register, name='thanks_register'),
     path('ckeditor/', include('ckeditor_uploader.urls')),  # админка
 
 

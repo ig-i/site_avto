@@ -1,11 +1,13 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from mobile.models import Mobile
 from mobile.models import UserForm  # модель обратная связь
 from mobile.models import CarForm  # модель заказ авто
 from .forms import RegisterUserForm, CallForm, OrdercarForm  # импортируем форму
+from telebot.send_message import send_telegram, send_telegram2
 
 
 # регистрация и автоматическая авторизация
@@ -14,16 +16,17 @@ def signup_user(request):
         return render(request, 'mobile/signupuser.html', {'form': RegisterUserForm()})
     else:
         if request.POST['password1'] == request.POST['password2']:  # создать нового  пользователя
+
             try:
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-                user.save()  # сохраняем нового пользователя
+                user.save()                                         # сохраняем нового пользователя
                 login(request, user)
+
                 return redirect('index')  # перенаправляем пользователя на главную страницу
             except IntegrityError:
                 return render(request, 'mobile/signupuser.html',
                               {'form': RegisterUserForm(),
                                'error': 'Такое имя пользователя уже существует. Задайте другое'})
-
         else:
             return render(request, 'mobile/signupuser.html',
                           {'form': RegisterUserForm(), 'error': 'Пароли не совпадают'})
@@ -55,7 +58,7 @@ def zakaz(request, pk):
     return render(request, 'mobile/zakaz.html', {'zakaz': zakaz_obj, 'form': OrdercarForm()})
 
 
-def thanks_page(request):  # форма заказ авто
+def thanks_page(request):  # форма заказ модели авто
     if request.POST:
         name = request.POST['name']  # забираем данные пользователя из полей формы
         telephone = request.POST['telephone']
@@ -65,6 +68,7 @@ def thanks_page(request):  # форма заказ авто
         element = CarForm(name=name, telephone=telephone, car_name=car_name, car_color=car_color,
                           car_year=car_year)
         element.save()
+        send_telegram2(tg_name=name, tg_phone=telephone, tg_car_name=car_name, tg_color=car_color, tg_year=car_year)
         return render(request, 'mobile/thanks.html', {'name': name})
     else:
         return render(request, 'mobile/index.html')
@@ -72,10 +76,24 @@ def thanks_page(request):  # форма заказ авто
 
 def thank_page(request):  # форма обратная связь
     if request.POST:
-        name = request.POST['name']  # забираем данные пользователя из полей формы
+        name = request.POST['name']           # забираем данные пользователя из полей формы
         telephone = request.POST['telephone']
         element = UserForm(name=name, telephone=telephone)
         element.save()
+        send_telegram(tg_name=name, tg_phone=telephone)
         return render(request, 'mobile/thank.html', {'name': name})
+    else:
+        return render(request, 'mobile/index.html')
+
+
+def thanks_register(request):  # форма регистр. и авториз.
+    if request.POST:
+        username = request.POST['username']           # забираем данные пользователя из полей формы
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        element = RegisterUserForm(username=username, email=email, password1=password1, password2=password2)
+        element.save()
+        return render(request, 'mobile/thanks_register.html')
     else:
         return render(request, 'mobile/index.html')

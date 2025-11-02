@@ -10,11 +10,11 @@
 
 <h3>{{ error }}</h3>
 
-<form  method="post" class="register">
+
+<form class="register" method="post">
     {% csrf_token %}
     {{ form }}
     <button class="btn3">Зарегестрироваться</button>
 </form>
-
 
 {% endblock %}
