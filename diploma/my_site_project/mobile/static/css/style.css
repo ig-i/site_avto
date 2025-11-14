@@ -11,15 +11,64 @@ body{
     position: relative;
     display: flex;
     justify-content: space-between;
+       
+}
+.container1{
+   
+     justify-content: space-between;
+     box-sizing: border-box;    
+}
+.col-md-3{
+    text-align: center;
+}
+
+.howit-wrap{
+     
+     /* justify-content: center;   */
+     /* align-items: center;  */
+     text-align: center; 
+}
+
+.row-1{
+   
+     display: flex;
+     justify-content: space-between;
+     box-sizing: border-box;   
     
+}
+.row-3{
+     display: flex;
+     justify-content: space-between;
+     box-sizing: border-box;
     
+     
+}
+.wrap1{
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    
+}
+.fulbo{
+    text-align: center;
+}
+
+.color1{
+    color: #dc3545;
+
+
+}
+.color2{
+    /* list-style: none; */
+    text-decoration: none;
     
 }
 .navbar-auto{
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
+    
 }
 
 
@@ -75,8 +124,6 @@ h2, h1{
 .menu{
     background: #003366;
     cursor: pointer;
-     
-
 }
 
 .menu ul{
@@ -102,17 +149,6 @@ h2, h1{
      margin-left: 6px;
 }
     
-/* .btn11 {
-    padding: 10px 22px;
-    background-color: #dc3545;
-    color: #FFF;
-    border-radius: 5px;
-    margin-top: 15px;
-    list-style: none;
-    font-weight: bold;
-    text-decoration: none; 
-} */
-
 .btn1 {
     /* display: inline-block; */
     background-color: #dc3545;
@@ -146,18 +182,6 @@ h2, h1{
     padding: 6px;
     margin-bottom: 6px;  
 }
-
-
-/* .btn22 {
-    padding: 10px 22px;
-    background-color: #b3b4b4;
-    color: #FFF;
-    border-radius: 5px;
-    margin-top: 15px;
-    text-decoration: none;
-    list-style: none;
-    font-weight: bold;
-} */
 
 .btn1 .p{
      font-weight: bold;
@@ -261,7 +285,7 @@ input, button{
     
 }
 .btn4{
-     border: 2px solid #264b5d;
+    border: 2px solid #264b5d;
     width: 90%;
     padding: 10px;
     font-size: 20px;
@@ -278,13 +302,7 @@ input, button{
     background-color: #dc3545;
     font-weight: bold;   
 }
-/* .col-2{
-   
-     display: flex;
-     justify-content: space-between;
-     box-sizing: border-box;   
-    
-} */
+
 form label{
     font-size: 18px;
 }

@@ -5,18 +5,16 @@
 {% block content %}
 
 <a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a>
-<div class="det">
+<div class="det"><img class="detMobile" src="{{ detail.image.url }}" alt="">
 
-    <img class="detMobile" src="{{ detail.image.url }}" alt="">
+    <div>
+        <h1>{{ detail.title }}</h1>
+        <h2>{{ detail.description|safe }}</h2>
+
+    </div>
+    <a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a>
 
 
-<div>
-       <h1>{{ detail.title }}</h1>
-    <h2>{{ detail.description|safe }}</h2>
+    {% endblock %}
 
 
-</div>
-
-<a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a>
-
-{% endblock %}

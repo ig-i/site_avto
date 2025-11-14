@@ -8,9 +8,31 @@ from mobile.models import UserForm  # модель обратная связь
 from mobile.models import CarForm  # модель заказ авто
 from .forms import RegisterUserForm, CallForm, OrdercarForm  # импортируем форму
 from telebot.send_message import send_telegram, send_telegram2
+from django.contrib import messages
 
 
 # регистрация и автоматическая авторизация
+# def signup_user(request):
+#     if request.method == "GET":
+#         return render(request, 'mobile/signupuser.html', {'form': RegisterUserForm()})
+#     else:
+#         if request.POST['password1'] == request.POST['password2']:  # создать нового  пользователя
+#
+#             try:
+#                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+#                 user.save()                                         # сохраняем нового пользователя
+#                 login(request, user)
+#                 messages.info(request, "Вы прошли регистрацию!")
+#                 return redirect('index')  # перенаправляем пользователя на главную страницу
+#             except IntegrityError:
+#                 return render(request, 'mobile/signupuser.html',
+#                               {'form': RegisterUserForm(),
+#                                'error': 'Такое имя пользователя уже существует. Задайте другое'})
+#         else:
+#             return render(request, 'mobile/signupuser.html',
+#                           {'form': RegisterUserForm(), 'error': 'Пароли не совпадают'})
+
+
 def signup_user(request):
     if request.method == "GET":
         return render(request, 'mobile/signupuser.html', {'form': RegisterUserForm()})
@@ -19,17 +41,16 @@ def signup_user(request):
 
             try:
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-                user.save()                                         # сохраняем нового пользователя
+                user.save()   # сохраняем нового пользователя
                 login(request, user)
-
+                messages.info(request, 'Вы прошли регистрацию!')
                 return redirect('index')  # перенаправляем пользователя на главную страницу
             except IntegrityError:
-                return render(request, 'mobile/signupuser.html',
-                              {'form': RegisterUserForm(),
-                               'error': 'Такое имя пользователя уже существует. Задайте другое'})
+                messages.error(request, 'Такое имя пользователя уже существует. Задайте другое')
+                return render(request, 'mobile/signupuser.html', {'form': RegisterUserForm()})
         else:
-            return render(request, 'mobile/signupuser.html',
-                          {'form': RegisterUserForm(), 'error': 'Пароли не совпадают'})
+            messages.error(request, 'Пароли не совпадают')
+            return render(request, 'mobile/signupuser.html', {'form': RegisterUserForm()})
 
 
 def index(request):
@@ -46,6 +67,11 @@ def detail(request, pk):
 def company(request):
     projects = Mobile.objects.all()
     return render(request, 'mobile/company.html', {'projects': projects})
+
+
+def condition_page(request):
+    projects = Mobile.objects.all()
+    return render(request, 'mobile/condition.html', {'projects': projects})
 
 
 def contact(request):
@@ -86,14 +112,14 @@ def thank_page(request):  # форма обратная связь
         return render(request, 'mobile/index.html')
 
 
-def thanks_register(request):  # форма регистр. и авториз.
-    if request.POST:
-        username = request.POST['username']           # забираем данные пользователя из полей формы
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
-        element = RegisterUserForm(username=username, email=email, password1=password1, password2=password2)
-        element.save()
-        return render(request, 'mobile/thanks_register.html')
-    else:
-        return render(request, 'mobile/index.html')
+# def thanks_register(request):  # форма регистр. и авториз.
+#     if request.POST:
+#         username = request.POST['username']           # забираем данные пользователя из полей формы
+#         email = request.POST['email']
+#         password1 = request.POST['password1']
+#         password2 = request.POST['password2']
+#         element = RegisterUserForm(username=username, email=email, password1=password1, password2=password2)
+#         element.save()
+#         return render(request, 'mobile/thanks_register.html')
+#     else:
+#         return render(request, 'mobile/index.html')

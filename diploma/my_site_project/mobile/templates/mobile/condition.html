@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'mobile/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="comp">
+        <a href="{% url 'index' %}"><img src="{% static 'mobile/left.png' %}"></a>
+
+        <div id="usloviya_prokata" class="container-fluid" style="background-color: #d9e2ef;">
+            <div class="container-1">
+                <h2 class="my-4 avenir pt-5"><span class="color1">Требования</span> к арендатору</h2>
+
+                <div class="row-1">
+                    <div class="col">
+                        <div class="howit-wrap">
+                            <img class="img1" src="{% static 'mobile/passport.jpg' %}"
+                                 border="0" alt="Документы">
+                            <h4 class="fulbo">Документы</h4>
+                            <p>Из документов нужны только Паспорт РФ и водительское удостоверение.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="howit-wrap">
+                            <img class="img1" src="{% static 'mobile/vozrast.jpg' %}"
+                                 border="0" alt="Возраст">
+                            <h4 class="fulbo">Возраст</h4>
+                            <p>Вам должно быть не менее 23 лет, что бы иметь возможность арендовать автомобиль в нашем
+                                прокате.</p>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="howit-wrap">
+                            <img class="img1" src="{% static 'mobile/staj.jpg' %}"
+                                 border="0" alt="Стаж">
+                            <h4 class="fulbo">Стаж</h4>
+                            <p>Ваш водительский стаж должен быть не менее 3 лет.</p>
+                        </div>
+                    </div>
+                </div><br><br>
+
+
+                <div class="info">
+                    <h3><span class="color1">Убедительная просьба!!!<br></span>Внимательно ознакомьтесь с договором
+                        аренды автомобиля
+                        размещенным в разделе<span class="color1"> --> </span><a href="{% static 'mobile/договор.doc' %}" target="_blank" class="color2">Документы</a></h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

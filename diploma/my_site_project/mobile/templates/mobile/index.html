@@ -19,7 +19,7 @@
 
             <li class="item text">
                 <span style="color"><img src="{% static 'mobile/map-ico.png' %}"> г.Владимир</span><br>
-                <span style="color  ">ул. Мира 57А, офис 208 </span>
+                <span style="color">ул. Мира 57А, офис 208 </span>
             </li>
 
             <li class="nav-item"><a class="avenir" href="#"
@@ -37,7 +37,8 @@
 <div class="menu">
     <ul>
         <li><a href="{% url 'company' %}">О нас</a></li>
-        <li><a href="{% static 'mobile/договор.doc' %} " target="_blank">Условия</a></li>
+        <li><a href="{% url 'condition_page' %}">Условия</a></li>
+        <li><a href="{% static 'mobile/договор.doc' %} " target="_blank">Документы</a></li>
         <li><a href="{% url 'contact' %}">Контакты</a></li>
         <li><a href="{% url 'signupuser' %}">Регистрация</a></li>
     </ul>
